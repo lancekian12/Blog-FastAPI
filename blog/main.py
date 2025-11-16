@@ -59,3 +59,11 @@ def update(id: int, blog: schemas.Blog, db: Session = Depends(get_db)):
     updated_blog.update({'title': blog.title, 'body': blog.body})
     db.commit()
     return 'updated'
+
+@app.post('/user', status_code=status.HTTP_201_CREATED , response_model=schemas.ShowUser)
+def create_user(user: schemas.User, db: Session = Depends(get_db)):
+    new_user = models.User(name=user.name, email=user.email, password=user.password)
+    db.add(new_user)
+    db.commit()
+    db.refresh(new_user)
+    return new_user
