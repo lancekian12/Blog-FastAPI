@@ -23,7 +23,6 @@ class User(BaseModel):
     password: str
     
 class ShowUser(BaseModel):
-    id: int
     name: str
     email: str
 
