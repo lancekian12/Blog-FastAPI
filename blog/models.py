@@ -1,5 +1,6 @@
 from sqlalchemy import Column, Integer, String, Boolean
 from .database import Base
+from pwdlib import PasswordHash
 
 
 class Blog(Base):
@@ -14,4 +15,6 @@ class User(Base):
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String)
     email = Column(String)
-    password = Column(String)
+
+class UserinDB(User):
+    hashed_password: str
