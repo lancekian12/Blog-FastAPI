@@ -64,8 +64,6 @@ def update(id: int, blog: schemas.Blog, db: Session = Depends(get_db)):
     return 'updated'
 
 
-
-
 @app.post('/user', status_code=status.HTTP_201_CREATED, response_model=schemas.ShowUser)
 def create_user(user: schemas.User, db: Session = Depends(get_db)):
     new_user = models.User(
@@ -77,3 +75,13 @@ def create_user(user: schemas.User, db: Session = Depends(get_db)):
     db.commit()
     db.refresh(new_user)
     return new_user
+
+
+@app.get('/user/{id}', status_code=status.HTTP_200_OK, response_model=schemas.ShowUser)
+def show_user(id: int, db: Session = Depends(get_db)):
+    user = db.query(models.User).filter(models.User.id == id).first()
+
+    if not user:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
+                            detail=f"User with the id {id} is not found")
+    return user
