@@ -15,6 +15,7 @@ class User(Base):
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String)
     email = Column(String)
+    password = Column(String)
 
-class UserinDB(User):
-    hashed_password: str
+# class UserinDB(User):
+#     hashed_password: str

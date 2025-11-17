@@ -3,3 +3,5 @@ uvicorn
 sqlalchemy
 pyjwt
 pwdlib
+passlib
+bcrypt
