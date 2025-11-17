@@ -1,5 +1,5 @@
 from sqlalchemy import Column, Integer, String, Boolean, ForeignKey
-from .database import Base
+from ..database import Base
 from pwdlib import PasswordHash
 from sqlalchemy.orm import relationship
 
