@@ -2,7 +2,7 @@ from fastapi import FastAPI, Response, Depends, status, HTTPException
 
 from .schemas import schemas
 from .models import models
-from .database import engine, Sessionlocal, get_db
+from .database.database import engine, Sessionlocal, get_db
 from .utils.security import Hash
 from sqlalchemy.orm import Session
 from typing import List
