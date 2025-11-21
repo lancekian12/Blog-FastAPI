@@ -7,7 +7,7 @@ from .utils.security import Hash
 from sqlalchemy.orm import Session
 from typing import List
 from pwdlib import PasswordHash
-from .router import blog, user
+from .router import blog, user, authentication
 
 app = FastAPI()
 
@@ -17,5 +17,6 @@ get_db = get_db
 
 app.include_router(blog.router)
 app.include_router(user.router)
+app.include_router(authentication.router)
 
 

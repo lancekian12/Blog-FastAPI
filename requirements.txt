@@ -3,5 +3,6 @@ uvicorn
 sqlalchemy
 pyjwt
 pwdlib
+pwlib[argon2]
 passlib
 bcrypt

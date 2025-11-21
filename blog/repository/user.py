@@ -7,7 +7,7 @@ def create_user_repo(user, db: Session):
     new_user = models.User(
         name=user.name,
         email=user.email,
-        password=Hash.bcrypt_password(user.password)
+        password=Hash.hash_password(user.password)
     )
     db.add(new_user)
     db.commit()
