@@ -1,0 +1,24 @@
+### To activate Python Virtual Environemt
+
+* Mac / Linux
+```bash
+source blog-env/bin/activate
+```
+* Windows Bash
+```bash
+source blog-env/Scripts/activate 
+```
+* Windows PowerShell
+```bash
+.\blog-env\Scripts\Activate.ps1
+```
+
+### To Deactivate Python Virtual Environment
+``` bash
+deactivate
+```
+----
+### Run the Application
+``` bash
+uvicorn blog.main:app --reload
+```

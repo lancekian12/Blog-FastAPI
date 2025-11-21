@@ -19,7 +19,6 @@ def login(request: OAuth2PasswordRequestForm = Depends(), db: Session = Depends(
         raise HTTPException(status_code=404, detail="Invalid Credentials")
     if not security.Hash.verify_password(request.password, user.password):
         raise HTTPException(status_code=404, detail="Invalid Credentials")
-    # generate a jwt token and return it
     access_token_expires = timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
     access_token = create_access_token(
         data={"sub": user.email}, expires_delta=access_token_expires
