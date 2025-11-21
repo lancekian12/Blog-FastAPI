@@ -1,9 +1,10 @@
 fastapi
+fastapi[standard]
 python-multipart
 uvicorn
 sqlalchemy
 pyjwt
 pwdlib
-pwlib[argon2]
+pwdlib[argon2]
 passlib
 bcrypt
