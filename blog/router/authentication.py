@@ -4,6 +4,8 @@ from ..database.database import get_db
 from ..models import models
 from sqlalchemy.orm import Session
 from ..utils import security
+from datetime import timedelta
+from ..utils.token import create_access_token, ACCESS_TOKEN_EXPIRE_MINUTES
 
 router = APIRouter(tags=['Authentication'])
 
@@ -17,4 +19,9 @@ def login(request: schemas.Login, db: Session = Depends(get_db)):
     if not security.Hash.verify_password(request.password, user.password):
         raise HTTPException(status_code=404, detail="Invalid Credentials")
     # generate a jwt token and return it
-    return user
+    access_token_expires = timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
+    access_token = create_access_token(
+        data={"sub": user.email}, expires_delta=access_token_expires
+    )
+
+    return {"access_token": access_token, "token_type": "bearer"}
