@@ -1,6 +1,6 @@
 ### To activate Python Virtual Environment
 
-* Mac / Linux
+* Mac  /  Linux
 ```bash
 source blog-env/bin/activate
 ```
